@@ -11,7 +11,7 @@ public class MailPage extends BasePage {
     @FindBy(xpath="//span[contains(.,'Vita')]")
     private WebElement textUserName;
 
-   @FindBy(xpath="//p[@class='make_message']/a")
+   @FindBy(xpath="//div[@class=\"section_nav\"]//a[@id='ctrlCompose']")
    private WebElement btnCreateEmail;
 
     public String getTextUserName(){

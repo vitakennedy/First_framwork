@@ -17,9 +17,9 @@ public abstract class BaseTest {
 
     }
 
-    @AfterSuite
+   /* @AfterSuite
     public void tearDown() throws Exception {
         app.common.appOut();
 
-    }
+    }*/
 }

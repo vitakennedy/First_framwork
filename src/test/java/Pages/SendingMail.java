@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
  */
 public class SendingMail extends BasePage {
 
-    @FindBy(xpath = "//textarea[@id='compose_to']")
+    @FindBy(xpath = "//span/textarea[@id='compose_to']")
     private WebElement inputTo;
 
     @FindBy(xpath = "//input[@name='subject']")
@@ -22,9 +22,11 @@ public class SendingMail extends BasePage {
     @FindBy(xpath = "//input[contains(@tabindex,'12')]")
     private WebElement btnCompose;
 
-    @FindBy(xpath="//div[contains(.,'Письмо успешно отправлено адресатам')]")
+    @FindBy(xpath="//div[@class='block_confirmation']/div[@class='content clear']")
     private WebElement textSuccessfullySendMail;
 
+    @FindBy(xpath = "//ul[@id='foldersContainer']/li[@class='current new']/a")
+    private WebElement btnInputMails;
 
     public String sendMail(String email, String subject, String text) {
         try {
@@ -36,9 +38,16 @@ public class SendingMail extends BasePage {
         inputSubject.sendKeys(subject);
         inputText.sendKeys(text);
         btnCompose.click();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
        return textSuccessfullySendMail.getText();
     }
-
+    public void clickInputMails() {
+        btnInputMails.click();
+    }
 
 
 }
